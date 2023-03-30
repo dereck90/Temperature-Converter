@@ -25,7 +25,7 @@ namespace Temperature_Converter
         }
 
         private void tbKelvin_TextChanged(object sender, EventArgs e)
-        {
+      {
 
         }
 
@@ -35,57 +35,58 @@ namespace Temperature_Converter
             double celsius = 0;
             double kelvin = 0;
 
-            if (!string.IsNullOrEmpty(tbFarenheit.Text))
+            if (string.IsNullOrEmpty(tbFarenheit.Text) && string.IsNullOrEmpty(tbCelsius.Text) && string.IsNullOrEmpty(tbKelvin.Text))
             {
-                farenheit = double.Parse(tbFarenheit.Text);
-
-                celsius = ((farenheit - 32) * 5) / 9;
-                tbCelsius.Text = celsius.ToString();
-
-                kelvin = (((farenheit - 32) * 5) / 9) + 273.15;
-                tbKelvin.Text = kelvin.ToString();
+                tbFarenheit.Text = "";
+                tbCelsius.Text = "";
+                tbKelvin.Text = "";
+                MessageBox.Show("Fields can't be empty. Please write only in one field.");
             }
-            else if (!string.IsNullOrEmpty(tbCelsius.Text))
+            else if (!string.IsNullOrEmpty(tbFarenheit.Text) && !string.IsNullOrEmpty(tbCelsius.Text) && !string.IsNullOrEmpty(tbKelvin.Text))
             {
-                celsius = double.Parse(tbCelsius.Text);
-
-                farenheit = celsius * 1.8 + 32;
-                tbFarenheit.Text = farenheit.ToString();
-
-                kelvin = celsius + 273.15;
-                tbKelvin.Text = kelvin.ToString();
-            }
-            else if (!string.IsNullOrEmpty(tbKelvin.Text))
-            {
-                kelvin = double.Parse(tbKelvin.Text);
-
-                farenheit = (kelvin - 273.15) * 1.8 + 32;
-                tbFarenheit.Text = farenheit.ToString();
-
-                celsius = kelvin - 273.15;
-                tbCelsius.Text = celsius.ToString();
+                tbFarenheit.Text = "";
+                tbCelsius.Text = "";
+                tbKelvin.Text = "";
+                MessageBox.Show("All fields can't be full. Please write only in one field.");
             }
             else
             {
-                MessageBox.Show("Please try again");
-                if (!string.IsNullOrEmpty(tbCelsius.Text) && !string.IsNullOrEmpty(tbKelvin.Text))
+                if (!string.IsNullOrEmpty(tbFarenheit.Text) && double.TryParse(tbFarenheit.Text, out _))
+                {
+                    farenheit = double.Parse(tbFarenheit.Text);
+
+                    celsius = (farenheit - 32) / 1.8;
+                    tbCelsius.Text = celsius.ToString();
+
+                    kelvin = (farenheit - 32) / 1.8 + 273.15;
+                    tbKelvin.Text = kelvin.ToString();
+                }
+                else if (!string.IsNullOrEmpty(tbCelsius.Text) && double.TryParse(tbCelsius.Text, out _))
+                {
+                    celsius = double.Parse(tbCelsius.Text);
+
+                    farenheit = celsius * 1.8 + 32;
+                    tbFarenheit.Text = farenheit.ToString();
+
+                    kelvin = celsius + 273.15;
+                    tbKelvin.Text = kelvin.ToString();
+                }
+                else if (!string.IsNullOrEmpty(tbKelvin.Text) && double.TryParse(tbKelvin.Text, out _))
+                {
+                    kelvin = double.Parse(tbKelvin.Text);
+
+                    farenheit = (kelvin - 273.15) * 1.8 + 32;
+                    tbFarenheit.Text = farenheit.ToString();
+
+                    celsius = kelvin - 273.15;
+                    tbCelsius.Text = celsius.ToString();
+                }
+                else
                 {
                     tbFarenheit.Text = "";
                     tbCelsius.Text = "";
                     tbKelvin.Text = "";
-                    MessageBox.Show("Please write a number in one field at a time");
-                }
-                else
-                {
-                    if (double.TryParse(tbFarenheit.Text, out _))
-                    {
-
-                    }
-                    else
-                    {
-                        tbFarenheit.Text = "";
-                        MessageBox.Show("Only numbers accepted. Try Again");
-                    }
+                    MessageBox.Show("Only numbers accepted. Try Again");
                 }
             }
         }
@@ -93,6 +94,13 @@ namespace Temperature_Converter
         private void lblCelcius_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            tbFarenheit.Text = "";
+            tbCelsius.Text = "";
+            tbKelvin.Text = "";
         }
     }
 }

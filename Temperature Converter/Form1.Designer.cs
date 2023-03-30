@@ -36,6 +36,7 @@
             btnConvert = new Button();
             tbFarenheit = new TextBox();
             lblFarenheit = new Label();
+            btnDelete = new Button();
             SuspendLayout();
             // 
             // tbCelsius
@@ -75,7 +76,7 @@
             // 
             // btnConvert
             // 
-            btnConvert.Location = new Point(99, 154);
+            btnConvert.Location = new Point(36, 154);
             btnConvert.Name = "btnConvert";
             btnConvert.Size = new Size(75, 23);
             btnConvert.TabIndex = 6;
@@ -100,11 +101,22 @@
             lblFarenheit.TabIndex = 8;
             lblFarenheit.Text = "Farenheit";
             // 
+            // btnDelete
+            // 
+            btnDelete.Location = new Point(145, 154);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(75, 23);
+            btnDelete.TabIndex = 9;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
+            // 
             // TemperatureConverter
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(264, 189);
+            Controls.Add(btnDelete);
             Controls.Add(lblFarenheit);
             Controls.Add(tbFarenheit);
             Controls.Add(btnConvert);
@@ -128,5 +140,6 @@
         private Button btnConvert;
         private TextBox tbFarenheit;
         private Label lblFarenheit;
+        private Button btnDelete;
     }
 }
