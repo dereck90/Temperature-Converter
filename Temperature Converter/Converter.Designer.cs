@@ -37,6 +37,9 @@
             tbFarenheit = new TextBox();
             lblFarenheit = new Label();
             btnDelete = new Button();
+            btnCopyFarenheit = new Button();
+            btnCopyCelsius = new Button();
+            btnCopyKelvin = new Button();
             SuspendLayout();
             // 
             // tbCelsius
@@ -50,7 +53,7 @@
             // lblCelsius
             // 
             lblCelsius.AutoSize = true;
-            lblCelsius.Location = new Point(36, 73);
+            lblCelsius.Location = new Point(40, 76);
             lblCelsius.Name = "lblCelsius";
             lblCelsius.Size = new Size(44, 15);
             lblCelsius.TabIndex = 3;
@@ -60,7 +63,7 @@
             // lblKelvin
             // 
             lblKelvin.AutoSize = true;
-            lblKelvin.Location = new Point(42, 120);
+            lblKelvin.Location = new Point(45, 123);
             lblKelvin.Name = "lblKelvin";
             lblKelvin.Size = new Size(39, 15);
             lblKelvin.TabIndex = 5;
@@ -95,7 +98,7 @@
             // lblFarenheit
             // 
             lblFarenheit.AutoSize = true;
-            lblFarenheit.Location = new Point(28, 25);
+            lblFarenheit.Location = new Point(28, 28);
             lblFarenheit.Name = "lblFarenheit";
             lblFarenheit.Size = new Size(56, 15);
             lblFarenheit.TabIndex = 8;
@@ -111,11 +114,44 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
+            // btnCopyFarenheit
+            // 
+            btnCopyFarenheit.Image = (Image)resources.GetObject("btnCopyFarenheit.Image");
+            btnCopyFarenheit.Location = new Point(209, 22);
+            btnCopyFarenheit.Name = "btnCopyFarenheit";
+            btnCopyFarenheit.Size = new Size(26, 26);
+            btnCopyFarenheit.TabIndex = 10;
+            btnCopyFarenheit.UseVisualStyleBackColor = true;
+            btnCopyFarenheit.Click += btnCopyFarenheit_Click;
+            // 
+            // btnCopyCelsius
+            // 
+            btnCopyCelsius.Image = (Image)resources.GetObject("btnCopyCelsius.Image");
+            btnCopyCelsius.Location = new Point(209, 70);
+            btnCopyCelsius.Name = "btnCopyCelsius";
+            btnCopyCelsius.Size = new Size(26, 26);
+            btnCopyCelsius.TabIndex = 11;
+            btnCopyCelsius.UseVisualStyleBackColor = true;
+            btnCopyCelsius.Click += btnCopyCelsius_Click;
+            // 
+            // btnCopyKelvin
+            // 
+            btnCopyKelvin.Image = (Image)resources.GetObject("btnCopyKelvin.Image");
+            btnCopyKelvin.Location = new Point(209, 117);
+            btnCopyKelvin.Name = "btnCopyKelvin";
+            btnCopyKelvin.Size = new Size(26, 26);
+            btnCopyKelvin.TabIndex = 12;
+            btnCopyKelvin.UseVisualStyleBackColor = true;
+            btnCopyKelvin.Click += btnCopyKelvin_Click;
+            // 
             // TemperatureConverter
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(264, 189);
+            Controls.Add(btnCopyKelvin);
+            Controls.Add(btnCopyCelsius);
+            Controls.Add(btnCopyFarenheit);
             Controls.Add(btnDelete);
             Controls.Add(lblFarenheit);
             Controls.Add(tbFarenheit);
@@ -141,5 +177,8 @@
         private TextBox tbFarenheit;
         private Label lblFarenheit;
         private Button btnDelete;
+        private Button btnCopyFarenheit;
+        private Button btnCopyCelsius;
+        private Button btnCopyKelvin;
     }
 }

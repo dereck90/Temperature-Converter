@@ -66,9 +66,13 @@ namespace Temperature_Converter
 
             //Math operations are executed to convert temperature from Farenheit to Celsius and Kelvin
             celsius = (farenheit - 32) / 1.8;
+            //Math.Round limits the decimal position to 4
+            celsius = Math.Round(celsius, 4);
             tbCelsius.Text = celsius.ToString();
 
             kelvin = (farenheit - 32) / 1.8 + 273.15;
+            //Math.Round limits the decimal position to 4
+            kelvin = Math.Round(kelvin, 4);
             tbKelvin.Text = kelvin.ToString();
         }
         //Method will convert a value from Celsius to Farenheit and Kelvin
@@ -84,9 +88,13 @@ namespace Temperature_Converter
 
             //Math operations are executed to convert temperature from Celsius to Farenheit and Kelvin
             farenheit = celsius * 1.8 + 32;
+            //Math.Round limits the decimal position to 4
+            farenheit = Math.Round(farenheit, 4);
             tbFarenheit.Text = farenheit.ToString();
 
             kelvin = celsius + 273.15;
+            //Math.Round limits the decimal position to 4
+            kelvin = Math.Round(kelvin, 4);
             tbKelvin.Text = kelvin.ToString();
         }
         //Method will convert a value from Kelvin to Farenheit and Celsius
@@ -102,9 +110,13 @@ namespace Temperature_Converter
 
             //Math operations are executed to convert temperature from Kelvin to Farenheit and Celsius
             farenheit = (kelvin - 273.15) * 1.8 + 32;
+            //Math.Round limits the decimal position to 4
+            farenheit = Math.Round(farenheit, 4);
             tbFarenheit.Text = farenheit.ToString();
 
             celsius = kelvin - 273.15;
+            //Math.Round limits the decimal position to 4
+            celsius = Math.Round(celsius, 4);
             tbCelsius.Text = celsius.ToString();
         }
         private void btnConvert_Click(object sender, EventArgs e)
@@ -150,6 +162,49 @@ namespace Temperature_Converter
         private void btnDelete_Click(object sender, EventArgs e)
         {
             clearFields();
+        }
+
+        //This next method saves the temperature to the clipboard
+        private void btnCopyFarenheit_Click(object sender, EventArgs e)
+        {
+            //This code verifies if the field has data and saves it to the clipboard, if it's empty it shows a message
+            if (!string.IsNullOrEmpty(tbFarenheit.Text))
+            {
+                Clipboard.SetText($"{tbFarenheit.Text}°F");
+                MessageBox.Show($"{tbFarenheit.Text}°F, Copied!");
+            }
+            else
+            {
+                MessageBox.Show("There is no data for Farenheit");
+            }
+        }
+
+        private void btnCopyCelsius_Click(object sender, EventArgs e)
+        {
+            //This code verifies if the field has data and saves it to the clipboard, if it's empty it shows a message
+            if (!string.IsNullOrEmpty(tbCelsius.Text))
+            {
+                Clipboard.SetText($"{tbCelsius.Text}°C");
+                MessageBox.Show($"{tbCelsius.Text}°C, Copied!");
+            }
+            else
+            {
+                MessageBox.Show("There is no data for Celsius");
+            }
+        }
+
+        private void btnCopyKelvin_Click(object sender, EventArgs e)
+        {
+            //This code verifies if the field has data and saves it to the clipboard, if it's empty it shows a message
+            if (!string.IsNullOrEmpty(tbKelvin.Text))
+            {
+                Clipboard.SetText($"{tbKelvin.Text}K");
+                MessageBox.Show($"{tbKelvin.Text}K, Copied!");
+            }
+            else
+            {
+                MessageBox.Show("There is no data for Kelvin");
+            }
         }
     }
 }
