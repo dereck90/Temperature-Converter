@@ -20,3 +20,6 @@ the project, you can build and run the program using the "Start" button in the t
 
 Note that this program only supports basic temperature conversions between Celsius, Fahrenheit, and Kelvin. 
 More advanced temperature conversions (e.g. between Rankine or Réaumur) are not supported.
+
+# Author
+This program was created by Dereck Talavera.
